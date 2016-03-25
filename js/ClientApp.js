@@ -19,5 +19,5 @@ var MyFirstComponent = (
     React.createElement(MyTitle, null)
   )
 )
-
+// your main file - entry point for webpack - doesn't have an export
 ReactDOM.render(MyFirstComponent, document.getElementById('app'))
