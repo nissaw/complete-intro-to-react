@@ -1,15 +1,18 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const Landing = require('./Landing')
+const { Router, Route, hashHistory } = require('react-router')
+
+// the following 4 lines are summarized by line4 'destructuring'
+// const ReactRouter = require('react-router')
+// const Router = require('router');
+// const Route = require('route');
+// const hashHistory = require('hashHistory');
 
 const App = () => (
-  <div className='app-container'>
-  {/* this is how you do comments in jsx */}
-    <div className='home-info'>
-      <h1 className='title'>svideo</h1>
-      <input className='search' type='text' placeholder='Search' />
-      <button className='browse-all'> or Browse All </button>
-    </div>
-  </div>
+  <Router history={hashHistory}>
+    <Route path='/' component={Landing} />
+  </Router>
 )
 
 ReactDOM.render(<App />, document.getElementById('app'))
