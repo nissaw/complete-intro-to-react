@@ -19,6 +19,14 @@ module.exports = {
   },
   // all the external modulaes that you want webpack to pull in
   module: {
+    // we want es lint to check our code before it gets bundled
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      }    
+    ],
     loaders: [
       {
         // if a file name passes this regex run the loaders on it
