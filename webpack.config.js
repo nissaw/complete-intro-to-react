@@ -25,7 +25,7 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'eslint-loader',
         exclude: /node_modules/
-      }    
+      }
     ],
     loaders: [
       {
@@ -33,6 +33,10 @@ module.exports = {
         test: /\.jsx?$/,
         // if file passes the test run through babel-loader
         loader: 'babel-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   }
