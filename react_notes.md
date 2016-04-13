@@ -42,11 +42,38 @@ One index route per nesting
   /* eslint-env mocha */
 
 /*
-running tests
+## Running Tests
 
-// run in terminal:  mocha --require test/helpers/setup.js
-// adds Nyan cat:  mocha -R nyan --require test/helpers/setup.js
+> run in terminal:  mocha --require test/helpers/setup.js
+> adds Nyan cat:  mocha -R nyan --require test/helpers/setup.js
 
-// npm install --save-dev babel-polyfill
+>  npm install --save-dev babel-polyfill
 // can be written
-// npm i -D babel-polyfill
+> npm i -D babel-polyfill
+
+make an package script test
+
+step 16
+** test coverage NYC ( nyc is a wrapper for istanbul )
+npm install -g nyc // and it pretty much does the rest!
+nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test
+cd into coverage (ls -la b/c its a hidden file) then open index.html for visual display
+// for some reason when this is added to package.json as a 'cover' command the output is different
+
+## A Debbuging Tool to see everything getting passed down to your component also for Debbuging state
+```
+<div style={{textAlign: 'left'}}className='container'>
+  <pre>
+    <code>
+      {JSON.stringify(this.props, null, 4)}
+    </code>
+  </pre>
+</div>
+```
+
+## Data Tunneling Problem
+2 different components need the same data but they don't care about each other - instead of making each of them go get the data individually, push it at the closest common Ancestor and pass is down to both of them via props
+in parent App shows = {shows}
+in search
+set propTypes
+this.props.route.shows
