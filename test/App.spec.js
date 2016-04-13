@@ -3,20 +3,36 @@
 /* eslint-env mocha */
 
 const { expect } = require('chai')
+const React = require('react')
+const Search = require('../js/Search') // this is what we're going to run our tests against
+const ShowCard = require('../js/ShowCard')
+const { shows } = require ('../public/data')
+const { shallow, mount } = require('enzyme') // enzyme is our testing helper made by AirBnB, right now we just need shallow feature ( later mount )// shallow will just render Search, not all the children - ie it won't render showCard. which is good because if showcard caused a failure in our search test that would be bad, we will test showCard seperately later. shallow will 'stub' out showCard. It is also a lot faster
+
 
 describe('<Search />', () => {
-  it('should pass', () => {
-    expect(2).to.equal(5);
+  xit('should pass', () => {
+    expect(5).to.equal(5);
   })
-  // it('should pass', () => {
-    //  can write more here under the same describe block
-  // })
+  it('should render the brand', () => {
+    const wrapper = shallow(<Search />)
+    // console.log(wrapper.debug()) // this will spit out all the info wrapper gets
+    expect(wrapper.contains(<h1 className='brand'>svideo</h1>)).to.be.true // contains is part of enzyme
+  })
+  it('should render all shows for which data exists', () => {
+    const wrapper = shallow(<Search/>)
+    expect(wrapper.find(ShowCard).length).to.equal(shows.length)
+  })
+  it('should filter correctly given a new state', () => {
+    const wrapper = mount(<Search/>)
+    const input = wrapper.find('.search-input') // jQuery like syntax finds our node in jsx so we can programatically interact with it
+    input.node.value = 'house'
+    input.simulate('change')
+    expect(wrapper.state('searchTerm')).to.equal('house')
+    expect(wrapper.find('.show-card').length).to.equal(2) // mount 1. is slower but allows you to simulate events and interact  2. mount can't use the find class like wrapper on ln24 have to use css class.
+  })
 })
 
 
 // run in terminal:  mocha --require test/helpers/setup.js
 // adds Nyan cat:  mocha -R nyan --require test/helpers/setup.js
-
-// npm install --save-dev babel-polyfill
-// can be written
-// npm i -D babel-polyfill

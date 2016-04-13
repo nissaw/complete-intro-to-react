@@ -19,4 +19,34 @@ hashHistory is =the easier way to keep track of back/forward button Use - will b
 
 One index route per nesting
 
-  {/* this is how you do comments in jsx */}
+  {/* this is how you do comments in jsx */}   
+
+/*
+  introducing State
+  createClass
+
+  const Search = React.createClass({ // auto binding of this context
+  class Search extends React.Component {
+    constructor(props){
+      super(props)
+
+      this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
+    }
+
+
+  render is run A LOT so it needs to be a very performant function
+  ( using => to auto bind this with class is very expensive and not allowed/recommend )
+
+
+  // putting this comment (below) at the top of your spec tells eslint to know it is working with mocha here
+  /* eslint-env mocha */
+
+/*
+running tests
+
+// run in terminal:  mocha --require test/helpers/setup.js
+// adds Nyan cat:  mocha -R nyan --require test/helpers/setup.js
+
+// npm install --save-dev babel-polyfill
+// can be written
+// npm i -D babel-polyfill
