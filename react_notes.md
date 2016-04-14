@@ -60,6 +60,10 @@ nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --e
 cd into coverage (ls -la b/c its a hidden file) then open index.html for visual display
 // for some reason when this is added to package.json as a 'cover' command the output is different
 
+<!-- this.setState({ searchTerm }) // < es6 object initializing same as saying { searchTerm: searchTerm } -->
+
+// with createClass we can put propTypes inside the component, with stateless components and 'class' components they have to be below
+
 ## A Debbuging Tool to see everything getting passed down to your component also for Debbuging state
 ```
 <div style={{textAlign: 'left'}}className='container'>
@@ -77,3 +81,35 @@ in parent App shows = {shows}
 in search
 set propTypes
 this.props.route.shows
+
+## Component organization best practices
+ - 1st getInitialState
+ - life Cycle events
+ - personal added methods
+ - last: render
+
+## After Lunch Day 2
+  Going to make the header more flexible. On the search page it should show search input on the details page is should show a back button
+
+## React Dev Tools
+- have to allow access to file urls in extensions manager
+- $r is whatever you have selected in the React Dev Tools
+
+## Redux
+- not large, but very dense
+- use Redux to manage state when it grows out of hand
+- Flux was first, Elm took Flux and simplified it, made it really cool new functional language to write front-end UI's in,  
+  - Dan Abramov took Elm architechture and ported that to React in general and made it Redux
+- so we have this one-way data flow, props passing down props, passing down props. Children never pass data up to parents. Parents are the one source of truth
+- in Flux you have a data-store.
+34:34
+
+## One store with a tree like data structure
+- as opposed to Flux which had many many stores
+- all data lives in one store
+- cannot modify the data directly can only fire off events that do things to modify the data
+- emit an action, goes to the root reducer and it's going to dispactch to a sub-reducers (reducer is the function passed to a reduce function)
+- reducer takes one state( a state object ), does a transformation on it ( without modifying it ) and returns a new state ( state object )
+- don't follow organization for reducx in this demo
+
+## Refactor to Redux - only changed Search.jsx and store.jsx

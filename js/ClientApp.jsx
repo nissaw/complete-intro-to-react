@@ -4,15 +4,15 @@ const Landing = require('./Landing')
 const Search = require('./Search')
 const Layout = require('./Layout')
 const Details = require('./Details')
-const { shows } = require('../public/data')
 const { Router, Route, IndexRoute, hashHistory } = require('react-router')
+const { shows } = require('../public/data')
+const { store } = require('./Store')
+const { Provider } = require('react-redux') // anytime you use the connector is automatically connects to the redux store
 
 const App = React.createClass({   // because we needed to add a method (assignShow) - we need to convert this from a stateless function to createClass or es6 class
   assignShow (nextState, replace) { // replace comes from react-router. onEnter comes from there too, everytime the router goes to run this route onEnter will run
     const showArray = shows.filter((show) => show.imdbID === nextState.params.id)
-
     // console.log('nextState', nextState, 'showArray', showArray) // debugging
-
     if (showArray.length < 1) {
       return replace('/')
     }
@@ -32,4 +32,11 @@ const App = React.createClass({   // because we needed to add a method (assignSh
   }
 })
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+(
+  <Provider store={store}>
+    <App />
+  </Provider>
+),
+document.getElementById('app')
+)
