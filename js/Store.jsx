@@ -8,6 +8,7 @@ const initialState = {
 }
 // this is our root reducer
 // rootReducer is going to get called once when we initialize, so we provide it the default value for initialState.
+// usually don't make your own rootReducer, redux has a method (compose?) that makes it for you
 const rootReducer = (state = initialState, action) => {
   // console.log(state, action) // debugging
   switch (action.type) {
@@ -30,8 +31,10 @@ const reduceSearchTerm = (state, action) => {
   Object.assign(newState, state, {searchTerm: action.value})
   return newState
 }
-
-const store = redux.createStore(rootReducer)
+// this is also setting up our middleware to get redux dev tools to work
+const store = redux.createStore(rootReducer, initialState, redux.compose(
+    typeof window === 'object' && typeof window.devtoolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+))
 
 const mapStateToProps = (state) => {
   return { searchTerm: state.searchTerm }
@@ -51,6 +54,6 @@ const mapDispatchToProps = (dispatch) => {
 // this connector can also be in your component? what would you name them if you had multiple?
 const connector = reactRedux.connect(mapStateToProps, mapDispatchToProps)
 
-module.exports = { connector, store }
+module.exports = { connector, store, rootReducer }
 
 // todo middleware

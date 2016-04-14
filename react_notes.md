@@ -105,11 +105,29 @@ this.props.route.shows
 34:34
 
 ## One store with a tree like data structure
+- Stores and actions are just big objects
 - as opposed to Flux which had many many stores
-- all data lives in one store
+- In Redux all data lives in one store - in a tree, instead of adding a store you add a property
 - cannot modify the data directly can only fire off events that do things to modify the data
 - emit an action, goes to the root reducer and it's going to dispactch to a sub-reducers (reducer is the function passed to a reduce function)
 - reducer takes one state( a state object ), does a transformation on it ( without modifying it ) and returns a new state ( state object )
-- don't follow organization for reducx in this demo
+- don't follow organization for redux in this demo - there's probably better organization styles out there
 
-## Refactor to Redux - only changed Search.jsx and store.jsx
+## Refactor to Redux - only changed Search.jsx and store.jsx // but needed to change ClientApp.jsx
+
+- view state, what I have in the form, is this checkbox checked - keep view state in REact, while app state (user info, show data) in Redux
+
+## Redux Dev Tools
+- needs some setup in Store.jsx
+- also needs to come from a server, not the filesystem
+  - npm i -g http-server
+  - http -p 8080 ./
+
+## Testing Redux
+the reducers are what we are testing in redux. going from state a to state b
+
+## Universal Rendering
+- holy grail most compelling reason to use Node and React together
+- Universal Rendering sends down the inital payload the rendered app, then the js that makes your page interactive
+
+## Webpack Chunking
