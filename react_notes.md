@@ -135,4 +135,13 @@ the reducers are what we are testing in redux. going from state a to state b
 - onEnter was handling the passing around of shows but now Redux is passing it around
 - why did we separate browser entry from the app? can't refer to document in the node environment. need to separate what is our app vs what is rendering our app to the DOM (BrowserEntry)
 
-## Webpack Chunking
+## LifeCycle methods
+- add live IMDB rating to the details page
+- axios is an ajax request library that uses promises
+- setInitalState/constructor is called when a component is created
+- componentWillMount is called right before it goes in the DOM - runs both in the browser and in Node
+- componentDidMount called in brower not in node - this is where you make your AJAX calls!
+- componentWillUnmount called right before exiting the dom. Used to not leak memory, de-allocation, clean-up. remove eventlisteners, unsubscribe from an observable
+
+
+## Web-pack Chunking
