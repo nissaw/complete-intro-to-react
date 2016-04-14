@@ -33,7 +33,7 @@ const Header = React.createClass({
             svideo
           </Link>
         </h1>
-        { utilSpace }
+        {utilSpace}
       </header>
     )
   }

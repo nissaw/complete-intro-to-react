@@ -128,6 +128,10 @@ the reducers are what we are testing in redux. going from state a to state b
 
 ## Universal Rendering
 - holy grail most compelling reason to use Node and React together
-- Universal Rendering sends down the inital payload the rendered app, then the js that makes your page interactive
+- Universal Rendering sends down the initial payload the rendered app, then the Javascript that makes your page interactive
+- aka "server-side rendering" "isomorphic rendering"
+- If you don't include react router ( with just react it's like 26 lines) [github.com/btholt/es6-react-pres app.js]
+- First move all shows to Redux to it's no longer getting passed around everywhere
+- onEnter was handling the passing around of shows but now Redux is passing it around 
 
 ## Webpack Chunking

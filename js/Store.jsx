@@ -1,10 +1,13 @@
 const redux = require('redux')
 const reactRedux = require('react-redux')
+const { shows } = require('../public/data')
 
 // makes all of your actions constants
 const SET_SEARCH_TERM = 'setSearchTerm'
+// any components connected with the connetor gets these passed in to its props
 const initialState = {
-  searchTerm: ''
+  searchTerm: '',
+  shows
 }
 // this is our root reducer
 // rootReducer is going to get called once when we initialize, so we provide it the default value for initialState.
@@ -37,7 +40,10 @@ const store = redux.createStore(rootReducer, initialState, redux.compose(
 ))
 
 const mapStateToProps = (state) => {
-  return { searchTerm: state.searchTerm }
+  return {
+    searchTerm: state.searchTerm,
+    shows: state.shows
+  }
 }
 // const mapStateToProps = (state) => ({ return { searchTerm: state.searchTerm }) ES6 implicit return
 
