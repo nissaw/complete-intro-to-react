@@ -132,6 +132,7 @@ the reducers are what we are testing in redux. going from state a to state b
 - aka "server-side rendering" "isomorphic rendering"
 - If you don't include react router ( with just react it's like 26 lines) [github.com/btholt/es6-react-pres app.js]
 - First move all shows to Redux to it's no longer getting passed around everywhere
-- onEnter was handling the passing around of shows but now Redux is passing it around 
+- onEnter was handling the passing around of shows but now Redux is passing it around
+- why did we separate browser entry from the app? can't refer to document in the node environment. need to separate what is our app vs what is rendering our app to the DOM (BrowserEntry)
 
 ## Webpack Chunking
