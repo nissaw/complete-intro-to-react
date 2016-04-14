@@ -39,8 +39,8 @@ app.use('/public', express.static('./public'))
 // anything that doesn't match public will use this
 // request is anyting the user is sending to use, everything you want to send back goes into response
 app.use((req, res) => {
-  // where does match come from?
-  match({ routes: Routes(), location: req.url }, (error, redirectLocation, renderProps) => {
+  // where does match come from: react-router
+  match({ routes: Routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message)
     } else if (redirectLocation) {

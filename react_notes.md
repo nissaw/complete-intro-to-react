@@ -145,3 +145,9 @@ the reducers are what we are testing in redux. going from state a to state b
 
 
 ## Web-pack Chunking
+- @1:40
+- bundle is enormous
+- sucks to have to load all the js for all the pages long before you ever navigate to that page
+- so webpack knows what each page needs and when set up loads just what the page needs
+- webpack.config = where to put all the chunks /public/ chunks true
+- then use node-ensure to introduce our routing to async retrieval : ClientApp

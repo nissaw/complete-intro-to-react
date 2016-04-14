@@ -14,7 +14,7 @@ class Details extends React.Component {
   componentDidMount () {
     axios.get(`http://www.omdbapi.com/?i=${this.assignShow(this.props.params.id).imdbID}`)
       .then((response) => {
-        this.setState({ omdbData: response.data})
+        this.setState({omdbData: response.data})
       })
       .catch((error) => {
         console.error('axios error: ', error)
